@@ -2,9 +2,11 @@
 ##########################################################################################
 # Ubuntu 20.04+ LTS x86_64
 # Nextcloud 23, Nextcloud Hub II
-# Letzte Anpassung: 01. Dezember 2021
-# Version 1.0.1
-# Changes to nextcloud_scan_data()
+# Letzte Anpassung: 28. Januar 2022
+# Version 1.1
+# Update-Skript ergänzt (/root/update.sh)
+# config.php erweitert 'overwriteprotocol' => 'https',
+# https://github.com/criegerde/nextcloud-installationsskripte/blob/main/ubuntu-install.sh
 ##########################################################################################
 #
 # VORBEREITUNGEN FÜR DIE INSTALLATION
@@ -557,6 +559,7 @@ array (
 'logtimezone' => 'Europe/Berlin',
 'memcache.local' => '\\OC\\Memcache\\APCu',
 'memcache.locking' => '\\OC\\Memcache\\Redis',
+'overwriteprotocol' => 'https',
 'preview_max_x' => 1024,
 'preview_max_y' => 768,
 'preview_max_scale_factor' => 1,
