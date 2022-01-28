@@ -681,6 +681,31 @@ setHOLD
 /usr/bin/cat <<EOF >> /root/.bashrc
 alias nocc="sudo -u www-data /usr/bin/php /var/www/nextcloud/occ"
 EOF
+# Update-Skript anlegen
+/usr/bin/touch /root/update.sh
+/usr/bin/cat <<EOF >/root/update.sh
+#!/bin/bash
+apt update
+apt upgrade -V
+apt autoremove
+apt autoclean
+chown -R www-data:www-data /var/www/nextcloud
+find /var/www/nextcloud/ -type d -exec chmod 750 {} \;
+find /var/www/nextcloud/ -type f -exec chmod 640 {} \;
+# Nextcloud Update
+sudo -u www-data php /var/www/nextcloud/updater/updater.phar
+sudo -u www-data php /var/www/nextcloud/occ status
+sudo -u www-data php /var/www/nextcloud/occ -V
+sudo -u www-data php /var/www/nextcloud/occ db:add-missing-primary-keys
+sudo -u www-data php /var/www/nextcloud/occ db:add-missing-indices
+sudo -u www-data php /var/www/nextcloud/occ db:add-missing-columns
+sudo -u www-data php /var/www/nextcloud/occ db:convert-filecache-bigint
+sudo -u www-data sed -i "s/output_buffering=.*/output_buffering=0/" /var/www/nextcloud/.user.ini
+# Nextcloud-Apps aktualisieren
+sudo -u www-data php /var/www/nextcloud/occ app:update --all
+exit 0
+EOF
+chmod +x /root/update.sh
 # Aufräumen nach den Installationsarbeiten
 /usr/bin/cat /dev/null > ~/.bash_history
 history -c
