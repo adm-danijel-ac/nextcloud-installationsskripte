@@ -2,10 +2,9 @@
 ##########################################################################################
 # Debian 11+ x86_64
 # Nextcloud 23, Nextcloud Hub II
-# Letzte Anpassung: 28. Januar 2022
-# Version 1.1
-# Update-Skript ergänzt (/root/update.sh)
-# config.php erweitert 'overwriteprotocol' => 'https',
+# Letzte Anpassung: 29. Januar 2022
+# Version 1.2
+# MariaDB checksum c330d2755e18e48c3bba300a2898b0fc8ad2d3326d50b64e02fe65c67b454599
 # https://github.com/criegerde/nextcloud-installationsskripte/blob/main/debian-install.sh
 ##########################################################################################
 #
@@ -77,7 +76,7 @@ libfontconfig1 libfuse2 locate lsb-release libfile-fcntllock-perl net-tools scre
 /usr/bin/wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 # Hinzufügen des MARIADB Repositories
 /usr/bin/wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-/usr/bin/echo "fd3f41eefff54ce144c932100f9e0f9b1d181e0edd86a6f6b8f2a0212100c32c mariadb_repo_setup" | sha256sum -c -
+/usr/bin/echo "c330d2755e18e48c3bba300a2898b0fc8ad2d3326d50b64e02fe65c67b454599 mariadb_repo_setup" | sha256sum -c -
 /usr/bin/chmod +x mariadb_repo_setup
 ./mariadb_repo_setup --mariadb-server-version="mariadb-10.6"
 # Aktualisierung der Repositories und Software
