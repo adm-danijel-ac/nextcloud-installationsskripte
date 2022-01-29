@@ -2,10 +2,9 @@
 ##########################################################################################
 # Ubuntu 20.04+ LTS x86_64
 # Nextcloud 23, Nextcloud Hub II
-# Letzte Anpassung: 28. Januar 2022
-# Version 1.1
-# Update-Skript ergänzt (/root/update.sh)
-# config.php erweitert 'overwriteprotocol' => 'https',
+# Letzte Anpassung: 29. Januar 2022
+# Version 1.2
+# MariaDB checksum c330d2755e18e48c3bba300a2898b0fc8ad2d3326d50b64e02fe65c67b454599
 # https://github.com/criegerde/nextcloud-installationsskripte/blob/main/ubuntu-install.sh
 ##########################################################################################
 #
@@ -77,7 +76,7 @@ ssl-cert tree ubuntu-keyring unzip wget zip & CrI
 /usr/bin/echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx" | /usr/bin/tee /etc/apt/sources.list.d/nginx.list
 # Hinzufügen des MARIADB Repositories
 /usr/bin/wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-/usr/bin/echo "fd3f41eefff54ce144c932100f9e0f9b1d181e0edd86a6f6b8f2a0212100c32c mariadb_repo_setup" | sha256sum -c -
+/usr/bin/echo "c330d2755e18e48c3bba300a2898b0fc8ad2d3326d50b64e02fe65c67b454599 mariadb_repo_setup" | sha256sum -c -
 /usr/bin/chmod +x mariadb_repo_setup
 ./mariadb_repo_setup --mariadb-server-version="mariadb-10.6"
 # Entfernen der "Automatischen Aktualisierung"
