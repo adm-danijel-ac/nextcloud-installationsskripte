@@ -76,7 +76,7 @@ libfontconfig1 libfuse2 locate lsb-release libfile-fcntllock-perl net-tools scre
 # Checksum
 # /usr/bin/echo "c330d2755e18e48c3bba300a2898b0fc8ad2d3326d50b64e02fe65c67b454599 mariadb_repo_setup" | sha256sum -c -
 /usr/bin/chmod +x mariadb_repo_setup
-./mariadb_repo_setup --mariadb-server-version="mariadb-10.6"
+./mariadb_repo_setup --mariadb-server-version="mariadb-10.5"
 # Aktualisierung der Repositories und Software
 update_and_clean
 # Entfernen evtl. Relikte vorheriger Installationen: nginx, apache2
@@ -241,7 +241,7 @@ innodb_file_per_table = 1
 innodb_open_files = 400
 innodb_io_capacity = 4000
 innodb_flush_method = O_DIRECT
-innodb_read_only_compressed=OFF
+# innodb_read_only_compressed=OFF
 key_buffer_size = 128M
 lc_messages_dir = /usr/share/mysql
 lc_messages = en_US
