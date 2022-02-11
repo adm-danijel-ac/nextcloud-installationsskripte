@@ -2,10 +2,7 @@
 ##########################################################################################
 # Ubuntu 20.04+ LTS x86_64
 # Nextcloud 23, Nextcloud Hub II
-# Letzte Anpassung: 29. Januar 2022
-# Version 1.2
-# MariaDB checksum c330d2755e18e48c3bba300a2898b0fc8ad2d3326d50b64e02fe65c67b454599
-# https://github.com/criegerde/nextcloud-installationsskripte/blob/main/ubuntu-install.sh
+# Carsten Rieger IT-Services (www.c-rieger.de)
 ##########################################################################################
 #
 # VORBEREITUNGEN FÜR DIE INSTALLATION
