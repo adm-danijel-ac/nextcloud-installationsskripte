@@ -76,7 +76,7 @@ ssl-cert tree ubuntu-keyring unzip wget zip & CrI
 # Checksum
 # /usr/bin/echo "c330d2755e18e48c3bba300a2898b0fc8ad2d3326d50b64e02fe65c67b454599 mariadb_repo_setup" | sha256sum -c -
 /usr/bin/chmod +x mariadb_repo_setup
-./mariadb_repo_setup --mariadb-server-version="mariadb-10.5"
+./mariadb_repo_setup --mariadb-server-version="mariadb-10.6"
 # Entfernen der "Automatischen Aktualisierung"
 /usr/bin/apt purge -y unattended-upgrades 
 # Aktualisierung der Repositories und Software
