@@ -158,7 +158,7 @@ ${chmod} -R 775 /var/www/letsencrypt
 ${chmod} -R 770 /etc/letsencrypt
 ${chown} -R www-data:www-data /var/log/nextcloud /var/www/ /etc/letsencrypt
 # Hinzufügen des "non-interactive" Benutzers für das SSL-Zertifikatshandling
-/usr/sbin/adduser --disabled-login --gecos "" acmeuser
+${adduser} --disabled-login --gecos "" acmeuser
 # Hinzufügen des "non-interactive" Benutzers zur Gruppe www-data
 ${usermod} -aG www-data acmeuser
 # Berechtigungen für den Neustart des Webservers erteilen
@@ -329,7 +329,7 @@ ${echo} " Your database server will now be hardened - just follow the instructio
 ${echo} " Keep in mind: your MariaDB root password is still NOT set!"
 ${echo} ""
 # Härtung des MariaDB-Datenbankservers
-${mysqlsecureinstallation}=$(which mysql_secure_installation)
+mysqlsecureinstallation=$(which mysql_secure_installation)
 ${mysqlsecureinstallation}
 # Aktualisierung und Bereinigung des Servers
 ${apt} update -q4 & CrI
