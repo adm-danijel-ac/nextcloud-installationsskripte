@@ -91,7 +91,7 @@ ${echo} 'Acquire::ForceIPv4 "true";' >> /etc/apt/apt.conf.d/99force-ipv4
 # Installation der Basissoftware
 ${apt} install -y curl gpg 
 ${apt} install -y apt-transport-https bash-completion bzip2 ca-certificates debian-archive-keyring dirmngr ffmpeg ghostscript git gnupg gnupg2 htop \
-libfontconfig1 libfuse2 locate lsb-release libfile-fcntllock-perl net-tools screen sudo software-properties-common ssl-cert socat tree wget unzip zip & CrI
+libfontconfig1 libfuse2 locate lsb-release libfile-fcntllock-perl net-tools screen sudo software-properties-common ssl-cert smbclient socat tree wget unzip zip & CrI
 # Energiesparmodus am Server deaktiveren
 ${systemctl} mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 # Hinzufügen des NGINX Repositories
