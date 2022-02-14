@@ -12,6 +12,7 @@
 addaptrepository=$(which add-apt-repository)
 adduser=$(which adduser)
 apt=$(which apt)
+aptmark=$(which apt-mark) 
 cat=$(which cat)
 chmod=$(which chmod)
 chown=$(which chown)
@@ -64,11 +65,11 @@ CrI() {
   }
 # Relevante Cloud-Softwarepakete werden für apt-Aktualisierungen geblockt
 function setHOLD() {
-  apt-mark hold nginx*
-  apt-mark hold redis*
-  apt-mark hold mariadb*
-  apt-mark hold php*
-  apt-mark hold php8.0-*
+  ${aptmark} hold nginx*
+  ${aptmark} hold redis*
+  ${aptmark} hold mariadb*
+  ${aptmark} hold php*
+  ${aptmark} hold php8.0-*
   }
 # Globale Funktione um alle Cloud-Services neu zu starten
 function restart_all_services() {
