@@ -162,7 +162,7 @@ ${adduser} --disabled-login --gecos "" acmeuser
 # Hinzufügen des "non-interactive" Benutzers zur Gruppe www-data
 ${usermod} -aG www-data acmeuser
 # Berechtigungen für den Neustart des Webservers erteilen
-${sed} -i '$aacmeuser ALL=NOPASSWD: ${systemctl} reload nginx.service' /etc/sudoers
+${sed} -i '$aacmeuser ALL=NOPASSWD: /bin/systemctl reload nginx.service /etc/sudoers
 ${su} - acmeuser -c "/usr/bin/curl https://get.acme.sh | sh"
 ${su} - acmeuser -c ".acme.sh/acme.sh --set-default-ca --server letsencrypt"
 # Aktualisierung und Bereinigung des Servers
