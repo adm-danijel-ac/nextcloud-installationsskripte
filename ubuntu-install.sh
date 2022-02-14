@@ -90,7 +90,7 @@ ${echo} 'Acquire::ForceIPv4 "true";' >> /etc/apt/apt.conf.d/99force-ipv4
 # Installation der Basissoftware
 ${apt} install -y \
 apt-transport-https bash-completion bzip2 ca-certificates curl dirmngr ffmpeg ghostscript git gpg gnupg gnupg2 htop \
-libfile-fcntllock-perl libfontconfig1 libfuse2 locate lsb-release net-tools screen socat software-properties-common \
+libfile-fcntllock-perl libfontconfig1 libfuse2 locate lsb-release net-tools screen smbclient socat software-properties-common \
 ssl-cert tree ubuntu-keyring unzip wget zip & CrI
 # Energiesparmodus am Server deaktiveren
 ${systemctl} mask sleep.target suspend.target hibernate.target hybrid-sleep.target
