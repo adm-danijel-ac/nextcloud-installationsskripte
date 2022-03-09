@@ -45,7 +45,7 @@ ${cat} <<EOF >> /etc/motd
            https://www.c-rieger.de
            
 EOF
-# Die Installation wird in der Logdatei /nextcloud-installation/indtall.log protokolliert
+# Die Installation wird in der Logdatei /nextcloud-installation/install.log protokolliert
 exec > >(tee -i "/nextcloud-installation/install.log")
 exec 2>&1
 # Globale Funktion um das System zu aktualisieren und zu bereinigen
