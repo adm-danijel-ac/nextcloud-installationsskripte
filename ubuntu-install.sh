@@ -38,7 +38,6 @@ ${apt} install -y figlet
 figlet=$(which figlet)
 ${touch} /etc/motd
 ${figlet} nextcloud > /etc/motd
-${touch} /etc/motd
 ${cat} <<EOF >> /etc/motd
                  
       (c) Carsten Rieger IT-Services
@@ -69,7 +68,6 @@ function setHOLD() {
   ${aptmark} hold redis*
   ${aptmark} hold mariadb*
   ${aptmark} hold php*
-  ${aptmark} hold php8.0-*
   }
 # Globale Funktione um alle Cloud-Services neu zu starten
 function restart_all_services() {
