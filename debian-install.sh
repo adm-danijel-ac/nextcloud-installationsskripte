@@ -79,8 +79,8 @@ function restart_all_services() {
   }
 # Globale Funktion um die Daten zu indizieren und sowohl den fail2ban, als auch den ufw-Status ausgeben zu lassen
 function nextcloud_scan_data() {
-  ${su} - www-data -s /bin/bash -c '/usr/bin/php /var/www/nextcloud/occ files:scan --all'
-  ${su} - www-data -s /bin/bash -c '/usr/bin/php /var/www/nextcloud/occ files:scan-app-data'
+  ${su} - www-data -s /bin/bash -c '/usr/bin/php /var/www/nextcloud/occ files:scan --all -v'
+  ${su} - www-data -s /bin/bash -c '/usr/bin/php /var/www/nextcloud/occ files:scan-app-data -v'
   ${service} fail2ban restart
   }
 # START DER INSTALLATION
