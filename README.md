@@ -8,7 +8,7 @@ Sofern Sie das Skript erneut ausführen möchten, so führen Sie bitte zuerst fo
 
 <code>sudo -s</code><br>
 <code>apt remove --purge -y nginx* php* mariadb-* galera-* redis* fail2ban ufw --allow-change-held-packages</code><br>
-<code>sudo rm -Rf /etc/ufw /etc/fail2ban /var/www</code>
+<code>rm -Rf /etc/ufw /etc/fail2ban /var/www</code>
 
 Dabei werden alle Softwarepakete sowie Verzeichnisse und Daten aus vorherigen Installationen entfernt.
 Im Anschluss daran kann die Installation erneut durchgeführt werden.
