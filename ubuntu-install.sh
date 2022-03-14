@@ -48,8 +48,8 @@ echo "acme-Benutzer entfernen..."
 deluser --remove-all-files acmeuser
 echo "www-data cronjob entfernen..."
 crontab -u www-data -r
-echo "acme-Benutzer aus visudo enntfernen..."
-sed -i '/acmeuser/ d' /etc/sudoers
+echo "acme-Benutzer aus visudo entfernen..."
+rm -f /etc/sudoers.d/acmeuser
 echo "System bereinigen..."
 apt autoremove -y
 apt autoclean
@@ -185,7 +185,10 @@ ${adduser} --disabled-login --gecos "" acmeuser
 # Hinzufügen des "non-interactive" Benutzers zur Gruppe www-data
 ${usermod} -aG www-data acmeuser
 # Berechtigungen für den Neustart des Webservers erteilen
-${sed} -i '$aacmeuser ALL=NOPASSWD: /usr/bin/systemctl reload nginx.service' /etc/sudoers
+${touch} /etc/sudoers.d/acmeuser
+${cat} <<EOF >/etc/sudoers.d/acmeuser
+acmeuser ALL=NOPASSWD: /bin/systemctl reload nginx.service
+EOF
 ${su} - acmeuser -c "/usr/bin/curl https://get.acme.sh | sh"
 ${su} - acmeuser -c ".acme.sh/acme.sh --set-default-ca --server letsencrypt"
 # Aktualisierung und Bereinigung des Servers
