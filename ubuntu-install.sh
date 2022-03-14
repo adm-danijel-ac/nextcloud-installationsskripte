@@ -37,18 +37,18 @@ wget=$(which wget)
 ${touch} /nextcloud-installation/uninstall.sh
 ${cat} <<EOF >/nextcloud-installation/uninstall.sh
 #!/bin/bash
-echo "Datenverzeichnis entfernen..."
+echo "Nextcloud Datenverzeichnis entfernen..."
 NC_DATA_DIR=$(grep "datadirectory" /var/www/nextcloud/config/config.php | cut -d "'" -f 4)
 echo "Software entfernen..."
 apt remove --purge --allow-change-held-packages -y nginx* php* mariadb-* mysql-common galera-* redis* fail2ban ufw
-echo "Verzeichnisse entfernen..."
-rm -Rf /etc/ufw /etc/fail2ban /var/www /etc/mysql /etc/letsencrypt /var/log/nextcloud $NC_DATA_DIR
 echo "Verzeichnisse und Dateien entfernen..."
+rm -Rf /etc/ufw /etc/fail2ban /var/www /etc/mysql /etc/letsencrypt /var/log/nextcloud $NC_DATA_DIR
 rm -f /etc/ssl/certs/dhparam.pem /root/update.sh /etc/apt/sources.list.d/* /etc/motd /root/.bash_aliases
 echo "acme-Benutzer entfernen..."
 deluser --remove-all-files acmeuser
-echo "cronjob entfernen..."
+echo "www-data cronjob entfernen..."
 crontab -u www-data -r
+echo "acme-Benutzer aus visudo enntfernen..."
 sed -i '/acmeuser/ d' /etc/sudoers
 echo "System bereinigen..."
 apt autoremove -y
