@@ -17,6 +17,7 @@ oder<br>
 <code>cp nextcloud-installationsskripte/<b><i>debian</i></b>-install.sh /nextcloud-installation/install.sh</code><br>
 
 <h3>install.sh:</h3>
+<code>chmod +x /nextcloud-installation/install.sh</code><br>
 <code>/nextcloud-installation/install.sh</code><br>
 
 
