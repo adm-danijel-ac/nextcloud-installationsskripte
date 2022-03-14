@@ -38,7 +38,7 @@ ${touch} /nextcloud-installation/uninstall.sh
 ${cat} <<EOF >/nextcloud-installation/uninstall.sh
 #!/bin/bash
 echo "Nextcloud Datenverzeichnis entfernen..."
-NC_DATA_DIR=$(grep "datadirectory" /var/www/nextcloud/config/config.php | cut -d "'" -f 4)
+NC_DATA_DIR=\$(grep "datadirectory" /var/www/nextcloud/config/config.php | cut -d "'" -f 4)
 rm -Rf $NC_DATA_DIR
 echo "Software entfernen..."
 apt remove --purge --allow-change-held-packages -y nginx* php* mariadb-* mysql-common libdbd-mariadb-perl galera-* redis* fail2ban ufw
