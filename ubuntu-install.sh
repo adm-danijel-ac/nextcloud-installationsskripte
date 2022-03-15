@@ -712,7 +712,7 @@ ${sudo} -u www-data /usr/bin/php /var/www/nextcloud/cron.php
 # Sperren der Nextcloud relevanten Software für Aktualisierungen
 setHOLD
 IPA=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
-sudo -u www-data php /var/www/nextcloud/occ config:system:set trusted_domains 2 --value=$IPA
+${sudo} -u www-data /usr/bin/php /var/www/nextcloud/occ config:system:set trusted_domains 2 --value=$IPA
 # Abschlußbildschirm
 ${clear}
 ${echo} ""
