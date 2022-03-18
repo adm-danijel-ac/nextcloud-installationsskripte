@@ -669,11 +669,11 @@ ${apt} install -yq4 ufw & CrI
 # Einrichten der notwendigen Ports in der Firewall
 # Let's Encrypt:
 ufw=$(which ufw)
-${ufw} allow 80/tcp
+${ufw} allow 80/tcp comment "LetsEncrypt(http)"
 # Nextcloud SSL
-${ufw} allow 443/tcp
+${ufw} allow 443/tcp comment "TLS(https)"
 # SSH
-${ufw} allow 22/tcp
+${ufw} allow 22/tcp comment "SSH"
 # Aktivierung des Autostarts nach einem Server Neustart
 ${ufw} logging medium && ufw default deny incoming && ufw enable
 # dedizierter Neustart von  fail2ban, ufw und redis
