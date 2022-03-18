@@ -152,9 +152,7 @@ http {
   server_names_hash_bucket_size 64;
   access_log /var/log/nginx/access.log;
   error_log /var/log/nginx/error.log warn;
-  set_real_ip_from 127.0.0.1;
-  #optional ergänzen, bspw:
-  #set_real_ip_from 192.168.2.0/24;
+  #set_real_ip_from 127.0.0.1;
   real_ip_header X-Forwarded-For;
   real_ip_recursive on;
   include /etc/nginx/mime.types;
