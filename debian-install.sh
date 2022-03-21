@@ -225,7 +225,7 @@ ${sed} -i 's/max_input_time =.*/max_input_time = 3600/' /etc/php/8.0/cli/php.ini
 ${sed} -i 's/post_max_size =.*/post_max_size = 10240M/' /etc/php/8.0/cli/php.ini
 ${sed} -i 's/upload_max_filesize =.*/upload_max_filesize = 10240M/' /etc/php/8.0/cli/php.ini
 ${sed} -i 's/;date.timezone.*/date.timezone = Europe\/\Berlin/' /etc/php/8.0/cli/php.ini
-${sed} -i 's/memory_limit = 128M/memory_limit = 2048M/' /etc/php/8.0/fpm/php.ini
+${sed} -i 's/memory_limit = 128M/memory_limit = 512M/' /etc/php/8.0/fpm/php.ini
 ${sed} -i 's/output_buffering =.*/output_buffering = 'Off'/' /etc/php/8.0/fpm/php.ini
 ${sed} -i 's/max_execution_time =.*/max_execution_time = 3600/' /etc/php/8.0/fpm/php.ini
 ${sed} -i 's/max_input_time =.*/max_input_time = 3600/' /etc/php/8.0/fpm/php.ini
