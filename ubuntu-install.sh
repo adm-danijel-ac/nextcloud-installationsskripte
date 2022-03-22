@@ -602,7 +602,7 @@ array (
 'htaccess.RewriteBase' => '/',
 'integrity.check.disabled' => false,
 'knowledgebaseenabled' => false,
-'log_rotate_size' => 104857600,
+'log_rotate_size' => '104857600',
 'logfile' => '/var/log/nextcloud/nextcloud.log',
 'loglevel' => 2,
 'logtimezone' => 'Europe/Berlin',
