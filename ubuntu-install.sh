@@ -616,7 +616,8 @@ array (
 array (
 'host' => '/var/run/redis/redis-server.sock',
 'port' => 0,
-'timeout' => 0.0,
+'timeout' => 0.5,
+'dbindex' => 1,
 ),
 'quota_include_external_storage' => false,
 'share_folder' => '/Freigaben',
