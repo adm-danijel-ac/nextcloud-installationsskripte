@@ -44,7 +44,8 @@ echo "Software entfernen..."
 apt remove --purge --allow-change-held-packages -y nginx* php* mariadb-* mysql-common libdbd-mariadb-perl galera-* redis* fail2ban ufw
 echo "Verzeichnisse und Dateien entfernen..."
 rm -Rf /etc/ufw /etc/fail2ban /var/www /etc/mysql /etc/letsencrypt /var/log/nextcloud
-rm -f /etc/ssl/certs/dhparam.pem /root/update.sh /etc/apt/sources.list.d/* /etc/motd /root/.bash_aliases
+rm -f /etc/ssl/certs/dhparam.pem /root/update.sh /etc/apt/sources.list.d/* /etc/motd
+sed -i '/alias nocc/d' /root/.bashrc
 echo "acme-Benutzer entfernen..."
 deluser --remove-all-files acmeuser
 echo "www-data cronjob entfernen..."
