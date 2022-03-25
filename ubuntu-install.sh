@@ -134,7 +134,7 @@ update_and_clean & CrI
 ${apt} remove -y apache2 nginx nginx-common nginx-full --allow-change-held-packages
 ${rm} -Rf /etc/apache2 /etc/nginx
 # Installation des NGINX Webservers
-${apt} install -yq4 nginx & CrI
+${apt} install -yq4 nginx --allow-change-held-packages & CrI
 # Aktivierung des automatischen Starts des Webservers bei einem Reboot
 ${systemctl} enable nginx.service
 # Optimierung der NGINX Konfiguration
@@ -193,7 +193,7 @@ ${su} - acmeuser -c ".acme.sh/acme.sh --set-default-ca --server letsencrypt"
 # Aktualisierung und Bereinigung des Servers
 ${apt} update -q4 & CrI
 # Installation von PHP 8
-${apt} install -yq4 php8.0-{fpm,gd,mysql,curl,xml,zip,intl,mbstring,bz2,ldap,apcu,bcmath,gmp,imagick,igbinary,redis,smbclient,cli,common,opcache,readline} imagemagick ldap-utils nfs-common cifs-utils & CrI
+${apt} install -yq4 php-common php8.0-{fpm,gd,mysql,curl,xml,zip,intl,mbstring,bz2,ldap,apcu,bcmath,gmp,imagick,igbinary,redis,smbclient,cli,common,opcache,readline} imagemagick ldap-utils nfs-common cifs-utils --allow-change-held-packages & CrI
 # Optimierung von PHP 8
 # Ermittlung des für PHP 8 optimal/maximal zu verwendenden Arbeitsspeichers
 AvailableRAM=$(/usr/bin/awk '/MemAvailable/ {printf "%d", $2/1024}' /proc/meminfo)
@@ -257,7 +257,7 @@ ${service} nginx restart
 # Aktualisierung und Bereinigung des Servers
 ${apt} update -q4 & CrI
 # Installation des Datenbankservers MariaDB
-${apt} install -yq4 mariadb-server & CrI
+${apt} install -yq4 mariadb-server --allow-change-held-packages & CrI
 # Stoppen des Datenbankservers und Anpassen/Optimierung der DB-Serverkonfiguration
 ${service} mysql stop
 ${mv} /etc/mysql/my.cnf /etc/mysql/my.cnf.bak
@@ -359,7 +359,7 @@ ${mysql_secure_installation}
 # Aktualisierung und Bereinigung des Servers
 ${apt} update -q4 & CrI
 # Installation und Optimierung des Redis-Services
-${apt} install -yq4 redis-server & CrI
+${apt} install -yq4 redis-server --allow-change-held-packages & CrI
 ${cp} /etc/redis/redis.conf /etc/redis/redis.conf.bak
 ${sed} -i 's/port 6379/port 0/' /etc/redis/redis.conf
 ${sed} -i s/\#\ unixsocket/\unixsocket/g /etc/redis/redis.conf
