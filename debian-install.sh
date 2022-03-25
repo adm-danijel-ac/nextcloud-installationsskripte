@@ -193,7 +193,7 @@ ${su} - acmeuser -c ".acme.sh/acme.sh --set-default-ca --server letsencrypt"
 # Aktualisierung und Bereinigung des Servers
 ${apt} update -q4 & CrI
 # Installation von PHP 8
-${apt} install -yq4 php8.0-{fpm,gd,mysql,curl,xml,zip,intl,mbstring,bz2,ldap,apcu,bcmath,gmp,imagick,igbinary,redis,smbclient,cli,common,opcache,readline} imagemagick ldap-utils nfs-common cifs-utils & CrI
+${apt} install -yq4 php-common php8.0-{fpm,gd,mysql,curl,xml,zip,intl,mbstring,bz2,ldap,apcu,bcmath,gmp,imagick,igbinary,redis,smbclient,cli,common,opcache,readline} imagemagick ldap-utils nfs-common cifs-utils & CrI
 # Optimierung von PHP 8
 # Ermittlung des für PHP 8 optimal/maximal zu verwendenden Arbeitsspeichers
 AvailableRAM=$(/usr/bin/awk '/MemAvailable/ {printf "%d", $2/1024}' /proc/meminfo)
