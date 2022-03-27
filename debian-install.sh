@@ -237,7 +237,7 @@ ${sed} -i 's/;session.cookie_secure.*/session.cookie_secure = True/' /etc/php/8.
 ${sed} -i 's/;opcache.enable=.*/opcache.enable=1/' /etc/php/8.0/fpm/php.ini
 ${sed} -i 's/;opcache.enable_cli=.*/opcache.enable_cli=1/' /etc/php/8.0/fpm/php.ini
 ${sed} -i 's/;opcache.memory_consumption=.*/opcache.memory_consumption=128/' /etc/php/8.0/fpm/php.ini
-${sed} -i 's/;opcache.interned_strings_buffer=.*/opcache.interned_strings_buffer=8/' /etc/php/8.0/fpm/php.ini
+${sed} -i 's/;opcache.interned_strings_buffer=.*/opcache.interned_strings_buffer=16/' /etc/php/8.0/fpm/php.ini
 ${sed} -i 's/;opcache.max_accelerated_files=.*/opcache.max_accelerated_files=10000/' /etc/php/8.0/fpm/php.ini
 ${sed} -i 's/;opcache.revalidate_freq=.*/opcache.revalidate_freq=1/' /etc/php/8.0/fpm/php.ini
 ${sed} -i 's/;opcache.save_comments=.*/opcache.save_comments=1/' /etc/php/8.0/fpm/php.ini
