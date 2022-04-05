@@ -673,7 +673,7 @@ ${ufw} allow 80/tcp comment "LetsEncrypt(http)"
 # Nextcloud SSL
 ${ufw} allow 443/tcp comment "TLS(https)"
 # SSH
-SSHPORT = `grep -w Port /etc/ssh/sshd_config | awk '/Port/ {print $2}'`
+SSHPORT=`grep -w Port /etc/ssh/sshd_config | awk '/Port/ {print $2}'`
 allow $SSHPORT/tcp comment ="SSH"
 # Aktivierung des Autostarts nach einem Server Neustart
 ${ufw} logging medium && ufw default deny incoming && ufw enable
