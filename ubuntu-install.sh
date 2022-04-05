@@ -12,7 +12,7 @@
 addaptrepository=$(which add-apt-repository)
 adduser=$(which adduser)
 apt=$(which apt)
-aptmark=$(which apt-mark) 
+aptmark=$(which apt-mark)
 cat=$(which cat)
 chmod=$(which chmod)
 chown=$(which chown)
@@ -20,6 +20,7 @@ clear=$(which clear)
 cp=$(which cp)
 curl=$(which curl)
 echo=$(which echo)
+ln=$(which ln)
 mkdir=$(which mkdir)
 mv=$(which mv)
 rm=$(which rm)
@@ -549,7 +550,7 @@ fi
 done
 if [[ ! -e $NEXTCLOUDDATAPATH ]];
 then
-/usr/bin/mkdir -p $NEXTCLOUDDATAPATH
+${mkdir} -p $NEXTCLOUDDATAPATH
 fi
 ${chown} -R www-data:www-data $NEXTCLOUDDATAPATH
 ${echo} "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
