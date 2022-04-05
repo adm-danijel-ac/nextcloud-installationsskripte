@@ -20,6 +20,7 @@ clear=$(which clear)
 cp=$(which cp)
 curl=$(which curl)
 echo=$(which echo)
+ln=$(which ln)
 mkdir=$(which mkdir)
 mv=$(which mv)
 rm=$(which rm)
@@ -250,7 +251,7 @@ ${sed} -i 's/rights=\"none\" pattern=\"PS\"/rights=\"read|write\" pattern=\"PS\"
 ${sed} -i 's/rights=\"none\" pattern=\"EPS\"/rights=\"read|write\" pattern=\"EPS\"/' /etc/ImageMagick-6/policy.xml
 ${sed} -i 's/rights=\"none\" pattern=\"PDF\"/rights=\"read|write\" pattern=\"PDF\"/' /etc/ImageMagick-6/policy.xml
 ${sed} -i 's/rights=\"none\" pattern=\"XPS\"/rights=\"read|write\" pattern=\"XPS\"/' /etc/ImageMagick-6/policy.xml
-/usr/bin/ln -s /usr/local/bin/gs /usr/bin/gs
+${ln} -s /usr/local/bin/gs /usr/bin/gs
 # Neustart beider Dienste: PHP and NGINX
 ${service} php8.0-fpm restart
 ${service} nginx restart
