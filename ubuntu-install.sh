@@ -508,10 +508,12 @@ ${sed} -i "s/server_name YOUR.DEDYN.IO;/server_name $(hostname);/" /etc/nginx/co
 (/usr/bin/crontab -u www-data -l ; echo "*/5 * * * * /usr/bin/php -f /var/www/nextcloud/cron.php > /dev/null 2>&1") | /usr/bin/crontab -u www-data -
 # Neustart des Webservers NGINX
 ${service} nginx restart
+${clear}
 # Herunterladen und Entpacken des zum aktuellen Zeitpunkt neuesten Nextcloud Releases
 ${echo} "Downloading Nextcloud"
 ${wget} -q https://download.nextcloud.com/server/releases/latest.tar.bz2 & CrI
-${tar} -xjf latest.tar.bz2 -C /var/www
+${echo} "Extract Nextcloud"
+${tar} -xjf latest.tar.bz2 -C /var/www & CrI
 # Datei- und Verzeichnisberechtigungen korrigieren bzw. setzen
 ${chown} -R www-data:www-data /var/www/
 # Entfernen des Downloadpakets
@@ -674,7 +676,7 @@ ${ufw} allow 80/tcp comment "LetsEncrypt(http)"
 ${ufw} allow 443/tcp comment "TLS(https)"
 # SSH
 SSHPORT=`grep -w Port /etc/ssh/sshd_config | awk '/Port/ {print $2}'`
-allow $SSHPORT/tcp comment ="SSH"
+${ufw} allow $SSHPORT/tcp comment ="SSH"
 # Aktivierung des Autostarts nach einem Server Neustart
 ${ufw} logging medium && ufw default deny incoming && ufw enable
 # dedizierter Neustart von fail2ban, ufw und redis
