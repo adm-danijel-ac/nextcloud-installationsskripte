@@ -509,7 +509,7 @@ ${sed} -i "s/server_name YOUR.DEDYN.IO;/server_name $(hostname);/" /etc/nginx/co
 # Neustart des Webservers NGINX
 ${service} nginx restart
 # Herunterladen und Entpacken des zum aktuellen Zeitpunkt neuesten Nextcloud Releases
-${wget} https://download.nextcloud.com/server/releases/latest.tar.bz2
+${wget} -q https://download.nextcloud.com/server/releases/latest.tar.bz2
 ${tar} -xjf latest.tar.bz2 -C /var/www
 # Datei- und Verzeichnisberechtigungen korrigieren bzw. setzen
 ${chown} -R www-data:www-data /var/www/
@@ -672,7 +672,8 @@ ${ufw} allow 80/tcp comment "LetsEncrypt(http)"
 # Nextcloud SSL
 ${ufw} allow 443/tcp comment "TLS(https)"
 # SSH
-${ufw} allow 22/tcp comment "SSH"
+SSHPORT = `grep -w Port /etc/ssh/sshd_config | awk '/Port/ {print $2}'`
+allow $SSHPORT/tcp comment ="SSH"
 # Aktivierung des Autostarts nach einem Server Neustart
 ${ufw} logging medium && ufw default deny incoming && ufw enable
 # dedizierter Neustart von fail2ban, ufw und redis
