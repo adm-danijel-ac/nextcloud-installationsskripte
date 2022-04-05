@@ -103,7 +103,7 @@ function restart_all_services() {
   ${service} redis-server restart
   ${service} php8.0-fpm restart
   }
-# Globale Funktion um die Daten zu indizieren und sowohl den fail2ban, als auch den ufw-Status ausgeben zu lassen
+# Globale Funktion um die Daten zu indizieren
 function nextcloud_scan_data() {
   ${su} - www-data -s /bin/bash -c '/usr/bin/php /var/www/nextcloud/occ files:scan --all -v'
   ${su} - www-data -s /bin/bash -c '/usr/bin/php /var/www/nextcloud/occ files:scan-app-data -v'
@@ -284,7 +284,7 @@ default_storage_engine = InnoDB
 expire_logs_days = 2
 general_log_file = /var/log/mysql/mysql.log
 general_log = 0
-innodb_buffer_pool_size = 1024M
+innodb_buffer_pool_size = 2G
 innodb_buffer_pool_instances = 1
 innodb_flush_log_at_trx_commit = 2
 innodb_log_buffer_size = 32M
@@ -510,7 +510,7 @@ ${sed} -i "s/server_name YOUR.DEDYN.IO;/server_name $(hostname);/" /etc/nginx/co
 # Neustart des Webservers NGINX
 ${service} nginx restart
 # Herunterladen und Entpacken des zum aktuellen Zeitpunkt neuesten Nextcloud Releases
-${wget} https://download.nextcloud.com/server/releases/latest.tar.bz2
+${wget} -q https://download.nextcloud.com/server/releases/latest.tar.bz2
 ${tar} -xjf latest.tar.bz2 -C /var/www
 # Datei- und Verzeichnisberechtigungen korrigieren bzw. setzen
 ${chown} -R www-data:www-data /var/www/
@@ -674,7 +674,8 @@ ${ufw} allow 80/tcp comment "LetsEncrypt(http)"
 # Nextcloud SSL
 ${ufw} allow 443/tcp comment "TLS(https)"
 # SSH
-${ufw} allow 22/tcp comment "SSH"
+SSHPORT = `grep -w Port /etc/ssh/sshd_config | awk '/Port/ {print $2}'`
+allow $SSHPORT/tcp comment ="SSH"
 # Aktivierung des Autostarts nach einem Server Neustart
 ${ufw} logging medium && ufw default deny incoming && ufw enable
 # dedizierter Neustart von  fail2ban, ufw und redis
