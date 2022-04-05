@@ -85,7 +85,7 @@ function update_and_clean() {
 CrI() {
   while ps "$!" > /dev/null; do
   echo -n '.'
-  sleep '1.0'
+  sleep '0.5'
   done
   ${echo} ''
   }
@@ -510,7 +510,8 @@ ${sed} -i "s/server_name YOUR.DEDYN.IO;/server_name $(hostname);/" /etc/nginx/co
 # Neustart des Webservers NGINX
 ${service} nginx restart
 # Herunterladen und Entpacken des zum aktuellen Zeitpunkt neuesten Nextcloud Releases
-${wget} -q https://download.nextcloud.com/server/releases/latest.tar.bz2
+${echo} "Downloading Nextcloud"
+${wget} -q https://download.nextcloud.com/server/releases/latest.tar.bz2 & CrI
 ${tar} -xjf latest.tar.bz2 -C /var/www
 # Datei- und Verzeichnisberechtigungen korrigieren bzw. setzen
 ${chown} -R www-data:www-data /var/www/
