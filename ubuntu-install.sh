@@ -12,6 +12,7 @@
 addaptrepository=$(which add-apt-repository)
 adduser=$(which adduser)
 apt=$(which apt)
+aptkey=$(which apt-key)
 aptmark=$(which apt-mark)
 cat=$(which cat)
 chmod=$(which chmod)
@@ -119,7 +120,8 @@ ssl-cert tree ubuntu-keyring unzip wget zip & CrI
 # Energiesparmodus am Server deaktiveren
 ${systemctl} mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 # Hinzufügen des PHP 8 Repositories
-${addaptrepository} -y ppa:ondrej/php
+${echo} "deb https://ppa.launchpadcontent.net/ondrej/php/ubuntu focal main" | /usr/bin/tee /etc/apt/sources.list.d/php.list
+${aptkey} adv --keyserver keyserver.ubuntu.com --recv-keys 4f4ea0aae5267a6c
 # Hinzufügen des NGINX Repositories
 ${curl} https://nginx.org/keys/nginx_signing.key | /usr/bin/gpg --dearmor | /usr/bin/tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
 ${echo} "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx" | /usr/bin/tee /etc/apt/sources.list.d/nginx.list
